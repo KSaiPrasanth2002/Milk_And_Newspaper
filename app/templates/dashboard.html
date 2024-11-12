@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Dashboard</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #ADEFD1FF;
+            }
+            .section-container {
+                background-color: white;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            section {
+                display: none;
+            }
+            .navbar-brand img {
+                max-height: 40px;
+                width: auto;
+            }
+
+            .popup {
+                position: fixed;
+                padding-top: 10px;
+                padding-right: 6%;
+                top: 60px;
+                right: 20px;
+                z-index: 9999;
+            }
+
+            .alert-success {
+                background-color: #28a745;
+                color: #fff;
+                border-color: #218838;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'website' %}">
+                    <img src="{% static 'images/download(2)123456.png' %}" alt="Logo">
+                </a>
+                <a class="navbar-brand" href="#">My Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'edit_profile' %}" onclick="showSection('edit-profile')">Edit Profile</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{% url 'transactions' %}" onclick="showSection('my-transactions')">My Transactions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'my_subscriptions' %}" onclick="showSection('my-subscriptions')">My Subscriptions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('my-orders')">My Orders</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="popup">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="container">
+
+            <!-- My Subscriptions Section -->
+            <!-- <section id="my-subscriptions" class="mt-5 section-container" style="display: none;">
+                <h2>My Subscriptions</h2>
+                <ul>
+                    <li>Subscription 1 - $10/month</li>
+                    <li>Subscription 2 - $15/month</li>
+                    
+                </ul>
+            </section> -->
+
+            <!-- My Orders Section -->
+            <section id="my-orders" class="mt-5 section-container" style="display: none;">
+                <h2>My Orders</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123456</td>
+                            <td>Product A</td>
+                            <td>2</td>
+                            <td>Delivered</td>
+                        </tr>
+                        <tr>
+                            <td>789012</td>
+                            <td>Product B</td>
+                            <td>1</td>
+                            <td>Processing</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function showSection(sectionId) {
+                document.querySelectorAll('section').forEach(function(section) {
+                    section.style.display = 'none';
+                });
+
+                document.getElementById(sectionId).style.display = 'block';
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+            // Get all popup elements
+            var popups = document.querySelectorAll('.popup');
+
+            // Show each popup
+            popups.forEach(function (popup) {
+                // Show popup
+                popup.style.display = 'block';
+
+                // Hide popup after 3 seconds (adjust timing as needed)
+                setTimeout(function () {
+                    popup.style.display = 'none';
+                }, 3000); // 3000 milliseconds = 3 seconds
+            });
+        });
+        </script>
+    </body>
+</html>

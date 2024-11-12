@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Our Story</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #ADEFD1FF;
+            }
+
+            .container-fluid.one {
+                background-color: #343a40;
+                color: #ffffff;
+                padding: 10px 0;
+            }
+
+            .img1 {
+                max-height: 40px;
+                width: auto;
+            }
+
+            .vsh a {
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+
+            .vsh a:hover {
+                color: #d4d4d4;
+            }
+
+            .login-box {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            footer {
+                background-color: #343a40;
+                color: #fff;
+                padding: 50px 0;
+            }
+
+            .footer-content {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .footer-column {
+                flex: 1;
+                margin: 0 20px;
+            }
+
+            .footer-heading {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .footer-link {
+                display: block;
+                color: #bbb;
+                text-decoration: none;
+                margin-bottom: 10px;
+                transition: color 0.3s ease;
+            }
+
+            .footer-link:hover {
+                color: #fff;
+            }
+
+            .footer-form {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .footer-form input[type="email"] {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .footer-form button {
+                width: 100%;
+                padding: 10px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .footer-form button:hover {
+                background-color: #0056b3;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .social-icon {
+                font-size: 24px;
+                color: #fff;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+
+            .copyright {
+                text-align: center;
+                background-color: #120d0d;
+                color: white;
+                padding: 10px 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'website' %}">
+                    <img src="{% static 'images/download(2)123456.png' %}" alt="Logo" class="img1">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal" href="{% url 'OurStory' %}">Our Story</a></li>
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal" href="{% url 'Products' %}">Products</a></li>
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal" href="{% url 'subscription' %}">Subscribe</a></li>
+                    </ul>
+                    <!-- <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-lock"></i> Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'registration' %}"><i class="far fa-user"></i> Register</a>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container box-container mt-5" style="background-color: white; color: black; border-radius: 10px;">
+            <header style="text-align: center;">
+                <h2 style="font-weight: bold; padding-top: 30px; padding-bottom: 30px;">Our Story</h2>
+            </header>
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="text-align: center; padding-bottom: 20px;">Bringing simplicity back with our startup: natural, fresh milk delivered straight from local farms to your doorstep, ensuring purity and peace of mind. Say goodbye to reconstituted milk and adulteration worries, and hello to the freshness of the past.</p>
+                    <p style="text-align: center; padding-bottom: 20px;">Startup Milk & Newspaper, founded in 2024, comprises a team of innovative minds, blending tech expertise with a vision to revolutionize dairy and news consumption. Our pioneering mobile app streamlines milk and newspaper delivery, ensuring natural, fresh, and hassle-free service right at your doorstep.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card" style="border-radius: 10px;">
+                        <h3 class="card-title" style="font-weight: bold; padding-top: 20px; color: green; text-align: center;">Career</h3>
+                        <img src="https://img.freepik.com/free-vector/job-interview-conversation_74855-7566.jpg?w=1060&t=st=1707482879~exp=1707483479~hmac=76cc0ac32528ad44f8becbd5b1d6ad999f6b2109839138673d84033ad14bd4c7" class="card-img-top" alt="Career Image">
+                        <div class="card-body">
+                            <h1 class="card-title">Join in Milk and Newspaper</h1>
+                            <p class="card-text">We are hiring</p>
+                            <p class="card-text">Contact us: info@example.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card" style="border-radius: 10px;">
+                        
+                        <div class="card-body" style="text-align: center;">
+                            <h3 style="font-weight: bold; padding-top: 3px; padding-right: 30px; color: blue; text-align: center;">Founder</h3>
+                            <img src="{% static 'images/Prasanth.jpg' %}" class="card-img-top" alt="Prasanth" style="border-radius: 10px; height: 125px; width: 100px; display: inline-block;">
+                        </div> 
+                        <div class="card-body" style="position: relative;">
+                            <h6>We saw a clear problem to solve, a huge industry to tap into and a sustainable business model that we could scale using technology. A nice initiative.</h6>
+                            <span class="author-name" style="position: absolute; bottom: 0; right: 20px; font-size: 15px; color: black; font-weight: bold;">Kunisetty Venkata Prasanth</span>
+                        </div>                                               
+                    </div>
+                    <div class="card mt-2" style="border-radius: 10px;">
+                        <div class="card-body" style="text-align: center;">
+                            <img src="https://img.freepik.com/free-vector/set-mix-milk-dairy_1308-130308.jpg?w=740&t=st=1707486226~exp=1707486826~hmac=677ea85799e26f8297eb159efb0d4299f5426b1b05ae10e9785e1704e4a19028" class="card-img-top" alt="" style="height: 200px; width: 200px; display: inline-block;">
+                            <img src="https://play-lh.googleusercontent.com/ZaQtP11kLfANMAbtq_9DVOdk3Izn2mAJdkNFE-k0Oa9kk3eItPN2LJw0hRFgIsAF7HMP" class="card-img-top" alt="" style="padding-left: 20px; height: 200px; width: 200px; display: inline-block;">
+                        </div>                                             
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="container-fluid mt-4" style="background-color: white;">
+            <header style="text-align: center;">
+                <h2 style="font-weight: bold; padding-top: 10px; padding-right: 10px;">Explore Our Range</h2>
+                <p>Choose from our wide range of staples, dairy products, and fresh harvest. Get 100% natural essentials home delivered every day.</p>
+            </header>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                    <img src="https://i5.walmartimages.com/asr/cb1cd68e-8715-4d27-8cf3-d76d1fb3ecd7_1.be0f685e5aa0257357b63a83794fce59.jpeg" alt="flask" style="height: 300px; border-radius: 20px; width: 500px;">
+                </div>
+                <div class="col-md-12 text-center mt-4 mb-4">
+                    <a href="#" class="btn btn-success">View All Products</a>
+                </div>
+            </div>
+        </div>        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h5 class="footer-heading">About Us</h5>
+                    <a href="{% url 'OurStory' %}" class="footer-link">Our Story</a>
+                    <a href="#" class="footer-link">Mission</a>
+                    <a href="#" class="footer-link">Vision</a>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <p class="footer-link">123 Street, City</p>
+                    <p class="footer-link">Email: info@example.com</p>
+                    <p class="footer-link">Phone: 123-456-7890</p>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Phone Number</h5>
+                    <p class="footer-link">123-456-7890</p>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Subscribe to Newsletter</h5>
+                    <form id="subscribeForm" class="footer-form">
+                        <input type="email" class="form-control mb-2" placeholder="Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-instagram social-icon" onclick="window.open('https://www.instagram.com/', '_blank')"></i>
+                <i class="fab fa-twitter social-icon" onclick="window.open('https://twitter.com/', '_blank')"></i>
+                <i class="fab fa-google social-icon" onclick="window.open('https:://www.google.com/', '_blank')"></i>
+                <i class="fab fa-facebook social-icon" onclick="window.open('https://www.facebook.com/', '_blank')"></i>
+            </div>
+        </footer>
+    
+        <script>
+            document.getElementById("subscribeForm").addEventListener("submit", function(event){
+                event.preventDefault();
+                var email = document.getElementById("subscribeEmail").value;
+                alert("Subscribed successfully!");
+            });
+        </script>
+    
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
+        <div class="copyright">
+            <p>&copy; 2024 Milk and Newspaper Delivery Subscription Application. All rights reserved.</p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+
+
+
+<!-- <div class="container box-container mt-5" style="background-color: white; color: black; border-radius: 10px;">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 style="font-weight: bold; padding-top: 10px; padding-right: 30px; color: green;">Career</h3>
+                    <img src="https://img.freepik.com/free-vector/job-interview-conversation_74855-7566.jpg?w=1060&t=st=1707482879~exp=1707483479~hmac=76cc0ac32528ad44f8becbd5b1d6ad999f6b2109839138673d84033ad14bd4c7" alt="" style="height: 300px; width: 450px;">
+                    <div class="mt-5" style="padding-bottom: 20px;">
+                        <h1 style="font-weight: bold;">Join in Milk and Newspaper</h1>
+                        <p>We are hiring</p>
+                        <p>Contact us: info@example.com</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3 style="font-weight: bold; padding-top: 10px; padding-right: 30px; color: blue;">Founder</h3>
+                    <img src="https://example.com/path/to/Prasanth.jpg" alt="Prasanth" style="height: 125px; width: 100px;">
+                </div>
+            </div>
+        </div> -->

@@ -1,0 +1,389 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Milk and Newspaper</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #ADEFD1FF;
+            }
+
+            .navbar {
+                background-color: #343a40 !important;
+                color: #ffffff;
+                padding: 10px 0;
+            }
+
+            .navbar-brand img {
+                max-height: 40px;
+                width: auto;
+            }
+
+            .nav-link {
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+
+            .nav-link:hover {
+                color: #d4d4d4;
+            }
+
+            .container-fluid.one {
+                background-color: #343a40;
+                color: #ffffff;
+                padding: 10px 0;
+            }
+
+            .img1 {
+                max-height: 40px;
+                width: auto;
+            }
+
+            .vsh a {
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+
+            .vsh a:hover {
+                color: #d4d4d4;
+            }
+
+            .box-container {
+                border-radius: 10px;
+                
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 20px;
+                margin-top: 4%;
+            }
+
+            .box-image{
+                width: auto;
+                height: 450px;
+                
+            }
+            
+            .box-content {
+                color: #fff;
+                padding: 20px;
+               
+            }
+            footer {
+                background-color: #343a40;
+                color: #fff;
+                padding: 50px 0;
+            }
+
+            .footer-content {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .footer-column {
+                flex: 1;
+                margin: 0 20px;
+            }
+
+            .footer-heading {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .footer-link {
+                display: block;
+                color: #bbb;
+                text-decoration: none;
+                margin-bottom: 10px;
+                transition: color 0.3s ease;
+            }
+
+            .footer-link:hover {
+                color: #fff;
+            }
+
+            .footer-form {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .footer-form input[type="email"] {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .footer-form button {
+                width: 100%;
+                padding: 10px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .footer-form button:hover {
+                background-color: #0056b3;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .social-icon {
+                font-size: 24px;
+                color: #fff;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+
+            .copyright {
+                text-align: center;
+                background-color: #120d0d;
+                color: white;
+                padding: 10px 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'website' %}">
+                    <img src="{% static 'images/download(2)123456.png' %}" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'our_story' %}">Our Story</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Products' %}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'subscription' %}">Subscribe</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="{% url 'dashboard' %}" class="nav-link">My Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="nav-link"><i class="fas fa-lock"></i> Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'registration' %}" class="nav-link"><i class="fas fa-user"></i> Register</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container box-container mt-4" style="background-image: url(https://www.colorhexa.com/00203f.png);">
+            <div class="row">
+                <div class="col-md-7 box-content" style="padding-top: 180px;">
+                    <h1 style="text-transform: uppercase; font-family: monospace; font-size: 30px;">Premium Milk and Newspaper Services</h1>
+                    <p style="font-family: Arial; font-size: 17px;">Fresh milk and news, hassle-free mornings delivered to your doorstep!</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{% static 'images/Picsart_24-02-05_20-35-15-028.png' %}" alt="milk-box-character" class="box-image">
+                </div>
+            </div>
+        </div>
+        <div class="container box-container mt-4" style="background-color: white;">
+            <header style="text-align: center;">
+                <h2 style="font-weight: bold; color: black;">We are bringing Natural & Fresh back</h2>
+                <p style="color: black;">Better everyday health begins with the basics. We ensure everything in your kitchen has been thoroughly tested for purity and freshness</p>
+            </header>
+            <div class="row">
+                <div class="col-md-4">
+                    <div style="text-align: center;">
+                        <img src="{% static 'images/1707148404648.png' %}" alt="1707148404648" style="height: 200px; width: 200px;">
+                    </div>                    
+                    <h6 style="text-align: center; font-weight: bold;">Milking Twice a Day</h6>
+                    <p style="text-align: center;">We source milk from farmers on the outskirts of your city for complete freshness and purity</p>
+                </div>
+                <div class="col-md-4 mt-5">
+                    <div style="text-align: center;">
+                        <img src="{% static 'images/flask.png' %}" alt="flask" style="height: 100px; width: 100px;">
+                    </div>                    
+                    <h6 style="text-align: center; padding-top: 53px; font-weight: bold;">100+ Tests Everyday</h6>
+                    <p style="text-align: center;">We quality test all milk for adulteration every single day</p>
+                </div>
+                <div class="col-md-4 mt-5">
+                    <div style="text-align: center;">
+                        <img src="{% static 'images/milk_and_newspaper_delivery.png' %}" alt="milk_and_newspaper_delivery" style="height: 100px; width: 100px;">
+                    </div>                    
+                    <h6 style="text-align: center; padding-top: 53px; font-weight: bold;">Assured 7 AM Doorstep Delivery</h6>
+                    <p style="text-align: center;">Fresh Milk and Newspaper reaches your doorstep within few hours</p>
+                </div>
+            </div>            
+        </div>
+        <div class="container box-container mt-4" style="background-color: white;">
+            <header style="text-align: center;">
+                <h3 style="font-weight: bold; padding-top: 10px; padding-right: 10px;">How we make it work for you</h3>
+            </header>
+            <div class="row">
+                <div class="col-md-2" style="text-align: center; padding-bottom: 50px; padding-top: 80px;">
+                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSkuobzZiJoI4R0U6kWt8p3vbsQMaKst4s7_kYaqz-HhJZvQ0xC" alt="flask" style="height: 100px; width: 100px;">
+                </div>
+                <div class="col-md-4" style="border-right: 2px solid #ccc; padding-top: 40px;">
+                    <p style="text-align: start; font-weight: bold;">Modify your order till 12 midnight for next day early morning delivery of fresh cow & buffalo milk and Newspaper</p>
+                    <p style="text-align: start;">"We source fresh milk and newspapers daily essentials from the best farms in India. After quality testing at farms and in our labs, we deliver your daily needs without preservatives or mixing."</p>
+                </div>
+                <div class="col-md-6" style="padding-top: 30px; padding-bottom: 10px; padding-left: 125px;">
+                    <p><img src="{% static 'images/cart.png' %}" alt="cart" style="height: 40px; width: 40px;"> Order fresh milk & newspapers daily</p>
+                    <p><img src="{% static 'images/fresh.png' %}" alt="fresh" style="height: 40px; width: 40px;">Set a customized subscription plan</p>
+                    <p><img src="{% static 'images/calendar.png' %}" alt="calendar" style="height: 40px; width: 40px;">Use vacation mode for skipping deliveries</p>
+                    <p><img src="{% static 'images/wallet.png' %}" alt="wallet" style="height: 40px; width: 35px; padding-left: 10px; padding-bottom: 10px;"> Grab exciting offers for big saving</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <h3 class="mb-3 mb-5 font-semibold text-center">Farm to Home, Every Day</h3>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="d-flex justify-content-center align-items-end">
+                        <img loading="lazy" src="{% static 'images/fresh_milk.png' %}" class="img-fluid" alt="Milk collection from healthy cattle" style="height: 300px; width: auto;">
+                    </div>
+                    <h6 class="text-center mt-1">Milk collection from healthy cattle</h6>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-center align-items-end">
+                        <img loading="lazy" src="{% static 'images/100+_tests.png' %}" class="img-fluid" alt="Quality tested for 100+ common adulterants" style="height: 300px; width: auto;">
+                    </div>
+                    <h6 class="text-center mt-1">Quality tested for 100+ common adulterants</h6>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-center align-items-end">
+                        <img loading="lazy" src="{% static 'images/milk_and_newspaper_delivery.png' %}" class="img-fluid" alt="Home delivery by 7 am" style="height: 300px; width: auto;">
+                    </div>
+                    <h6 class="text-center mt-1">Home delivery by 7 am</h6>
+                </div>
+            </div>
+        </div>    
+        <div class="container mt-5">
+            <p class="mb-3" style="font-weight: bold;">We Deliver In</p>
+            <div id="weDeliverId" class="d-flex flex-row flex-nowrap overflow-auto">
+                <div class="carousel owl-carousel">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage d-flex">
+                            <div class="owl-item">
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="w-100 h-100 mb-3">
+                                        <img src="{% static 'images/guntur.png' %}" loading="lazy" alt="Loading Image">
+                                    </div>
+                                    <h6 class="text-center">Guntur</h6>
+                                </div>
+                            </div>
+                            <div class="owl-item">
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="w-100 h-100 mb-3">
+                                        <img src="{% static 'images/hyderabad.png' %}" loading="lazy" alt="Loading Image">
+                                    </div>
+                                    <h6 class="text-center">Hyderabad</h6>
+                                </div>
+                            </div>
+                            <div class="owl-item">
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="w-100 h-100 mb-3">
+                                        <img src="{% static 'images/vijayawada.png' %}" loading="lazy" alt="Loading Image">
+                                    </div>
+                                    <h6 class="text-center">Vijayawada</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        
+        <div class="container-fluid mt-5" style="background-color: white;">
+            <header style="text-align: center;">
+                <h2 style="font-weight: bold; padding-top: 10px; padding-right: 10px;">Explore Our Range</h2>
+                <p>Choose from our wide range of staples, dairy products, and fresh harvest. Get 100% natural essentials home delivered every day.</p>
+            </header>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                    <img src="https://i5.walmartimages.com/asr/cb1cd68e-8715-4d27-8cf3-d76d1fb3ecd7_1.be0f685e5aa0257357b63a83794fce59.jpeg" alt="flask" style="height: 300px; border-radius: 20px; width: 500px;">
+                </div>
+                <div class="col-md-12 text-center mt-4 mb-4 ">
+                    <a href="#" class="btn btn-success">View All Products</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h5 class="footer-heading">About Us</h5>
+                    <a href="{% url 'OurStory' %}" class="footer-link">Our Story</a>
+                    <a href="#" class="footer-link">Mission</a>
+                    <a href="#" class="footer-link">Vision</a>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <p class="footer-link">123 Street, City</p>
+                    <p class="footer-link">Email: info@example.com</p>
+                    <p class="footer-link">Phone: 123-456-7890</p>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Phone Number</h5>
+                    <p class="footer-link">123-456-7890</p>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Subscribe to Newsletter</h5>
+                    <form id="subscribeForm" class="footer-form">
+                        <input type="email" class="form-control mb-2" placeholder="Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-instagram social-icon" onclick="window.open('https://www.instagram.com/', '_blank')"></i>
+                <i class="fab fa-twitter social-icon" onclick="window.open('https://twitter.com/', '_blank')"></i>
+                <i class="fab fa-google social-icon" onclick="window.open('https://www.google.com/', '_blank')"></i>
+                <i class="fab fa-facebook social-icon" onclick="window.open('https://www.facebook.com/', '_blank')"></i>
+            </div>
+        </footer>
+    
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
+        <div class="copyright">
+            <p>&copy; 2024 Milk and Newspaper Delivery Subscription Application. All rights reserved.</p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

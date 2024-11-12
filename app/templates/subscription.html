@@ -1,0 +1,497 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Subscription Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #ADEFD1FF;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .container-fluid.one {
+                background-color: #343a40;
+                color: #ffffff;
+                padding: 10px 0;
+            }
+
+            .img1 {
+                max-height: 40px;
+                width: auto;
+            }
+
+            .vsh a {
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+
+            .vsh a:hover {
+                color: #d4d4d4;
+            }
+
+            .login-box {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            .pricingTable {
+                text-align: center;
+                background: #fff;
+                box-shadow: 0 0 10px #ababab;
+                padding-bottom: 40px;
+                border-radius: 10px;
+                color: #cad0de;
+                transform: scale(1);
+                transition: all .5s ease 0s;
+                margin-bottom: 20px;
+            }
+
+            .pricingTable:hover {
+                transform: scale(1.05);
+                z-index: 1;
+            }
+
+            .pricingTable .pricingTable-header {
+                padding: 40px 0;
+                background: #f5f6f9;
+                border-radius: 10px 10px 50% 50%;
+                transition: all .5s ease 0s;
+            }
+
+            .pricingTable:hover .pricingTable-header {
+                background: #ff9624;
+            }
+
+            .pricingTable .pricingTable-header i {
+                font-size: 50px;
+                color: #858c9a;
+                margin-bottom: 10px;
+                transition: all .5s ease 0s;
+            }
+
+            .pricingTable .price-value {
+                font-size: 35px;
+                color: #ff9624;
+                transition: all .5s ease 0s;
+            }
+
+            .pricingTable .month {
+                display: block;
+                font-size: 14px;
+                color: #cad0de;
+            }
+
+            .pricingTable:hover .month,
+            .pricingTable:hover .price-value,
+            .pricingTable:hover .pricingTable-header i {
+                color: #fff;
+            }
+
+            .pricingTable .heading {
+                font-size: 24px;
+                color: #ff9624;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+            }
+
+            .pricingTable .pricing-content ul {
+                list-style: none;
+                padding: 0;
+                margin-bottom: 30px;
+            }
+
+            .pricingTable .pricing-content ul li {
+                line-height: 30px;
+                color: #a7a8aa;
+            }
+
+            .pricingTable .pricingTable-signup a {
+                display: inline-block;
+                font-size: 15px;
+                color: #fff;
+                padding: 10px 35px;
+                border-radius: 20px;
+                background: #ffa442;
+                text-transform: uppercase;
+                transition: all .3s ease 0s;
+            }
+
+            .pricingTable .pricingTable-signup a:hover {
+                box-shadow: 0 0 10px #ffa442;
+            }
+
+            .pricingTable.blue .heading,
+            .pricingTable.blue .price-value {
+                color: #4b64ff;
+            }
+
+            .pricingTable.blue .pricingTable-signup a,
+            .pricingTable.blue:hover .pricingTable-header {
+                background: #4b64ff;
+            }
+
+            .pricingTable.blue .pricingTable-signup a:hover {
+                box-shadow: 0 0 10px #4b64ff;
+            }
+
+            .pricingTable.red .heading,
+            .pricingTable.red .price-value {
+                color: #ff4b4b;
+            }
+
+            .pricingTable.red .pricingTable-signup a,
+            .pricingTable.red:hover .pricingTable-header {
+                background: #ff4b4b;
+            }
+
+            .pricingTable.red .pricingTable-signup a:hover {
+                box-shadow: 0 0 10px #ff4b4b;
+            }
+
+            .pricingTable.green .heading,
+            .pricingTable.green .price-value {
+                color: #40c952;
+            }
+
+            .pricingTable.green .pricingTable-signup a,
+            .pricingTable.green:hover .pricingTable-header {
+                background: #40c952;
+            }
+
+            .pricingTable.green .pricingTable-signup a:hover {
+                box-shadow: 0 0 10px #40c952;
+            }
+
+            .pricingTable.blue:hover .price-value,
+            .pricingTable.green:hover .price-value,
+            .pricingTable.red:hover .price-value {
+                color: #fff;
+            }
+            
+            footer {
+                background-color: #343a40;
+                color: #fff;
+                padding: 50px 0;
+            }
+
+            .footer-content {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .footer-column {
+                flex: 1;
+                margin: 0 20px;
+            }
+
+            .footer-heading {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .footer-link {
+                display: block;
+                color: #bbb;
+                text-decoration: none;
+                margin-bottom: 10px;
+                transition: color 0.3s ease;
+            }
+
+            .footer-link:hover {
+                color: #fff;
+            }
+
+            .footer-form {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .footer-form input[type="email"] {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .footer-form button {
+                width: 100%;
+                padding: 10px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .footer-form button:hover {
+                background-color: #0056b3;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .social-icon {
+                font-size: 24px;
+                color: #fff;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+
+            .copyright {
+                text-align: center;
+                background-color: #120d0d;
+                color: white;
+                padding: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'website' %}">
+                    <img src="{% static 'images/download(2)123456.png' %}" alt="Logo" class="img1">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal" href="{% url 'OurStory' %}">Our Story</a></li>
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal" href="{% url 'Products' %}">Products</a></li>
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal" href="{% url 'subscription' %}">Subscribe</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="{% url 'dashboard' %}" class="nav-link">My Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="nav-link"><i class="fas fa-lock"></i> Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'registration' %}" class="nav-link"><i class="fas fa-user"></i> Register</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="demo">
+            <div class="container mt-3" style="padding-top: 60px;">
+                <div class="row justify-content-center">
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="pricingTable">
+                            <div class="pricingTable-header">
+                                <div class="price-value"> ₹850 <span class="month"></span> </div>
+                                <div class="price-value mt-2 mb-2" style="font-size: 25px;"><del> ₹950 </del><span class="month mt-2" style="font-weight: bold; color: black;">30 days Only</span> </div>
+                            </div>
+                            <h3 class="heading">Standard</h3>
+                            <div class="pricing-content">
+                                <ul>
+                                    <li><span class="tick-mark" style="color: green; margin-left: 5px; font-weight: bold;">&#10003;</span> <b style="display: inline-block; font-weight: bold; color: black;">Only Milk</b></li>
+                                    <li><span class="cross-mark" style="color: red; margin-left: 5px; font-weight: bold;">&#10007;</span> <b style="display: inline-block; font-weight: bold; color: black;">No Newspaper</b> </li>
+                                </ul>
+                            </div>
+                            <div class="pricingTable-signup">
+                                <a href="#" id="rzp-button1" data-plan="Standard" style="border-radius: 10px;">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="pricingTable green">
+                            <div class="pricingTable-header">
+                                <div class="price-value"> ₹2,225 <span class="month"></span> </div>
+                                <div class="price-value mt-2 mb-2" style="font-size: 25px;"><del> ₹2,550 </del><span class="month mt-2" style="font-weight: bold; color: black;">3 months</span> </div>
+                            </div>
+                            <h3 class="heading">Business</h3>
+                            <div class="pricing-content">
+                                <ul>
+                                    <li><span class="tick-mark" style="color: green; margin-left: 5px; font-weight: bold;">&#10003;</span> <b style="display: inline-block; font-weight: bold; color: black;">Milk</b></li>
+                                    <li><span class="tick-mark" style="color: green; margin-left: 5px; font-weight: bold;">&#10003;</span> <b style="display: inline-block; font-weight: bold; color: black;">Newspaper(1 Language)</b></li>
+                                </ul>
+                            </div>
+                            <div class="pricingTable-signup">
+                                <a href="#" id="rzp-button2" data-plan="Business" style="border-radius: 10px;">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="pricingTable blue">
+                            <div class="pricingTable-header">
+                                <div class="price-value"> ₹4,900 <span class="month"></span> </div>
+                                <div class="price-value mt-2 mb-2" style="font-size: 25px;"><del> ₹5,100 </del><span class="month mt-2" style="font-weight: bold; color: black;">6 months</span></div>
+                            </div>
+                            <h3 class="heading">Premium</h3>
+                            <div class="pricing-content">
+                                <ul>
+                                    <li><span class="tick-mark" style="color: green; margin-left: 5px; font-weight: bold;">&#10003;</span> <b style="display: inline-block; font-weight: bold; color: black;">Milk</b></li>
+                                    <li><span class="tick-mark" style="color: green; margin-left: 5px; font-weight: bold;">&#10003;</span> <b style="display: inline-block; font-weight: bold; color: black;">Newspaper(Multi Language)</b></li>
+                                </ul>
+                            </div>
+                            <div class="pricingTable-signup">
+                                <a href="#" id="rzp-button3" data-plan="Premium" style="border-radius: 10px;">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            function razorpayHandler(plan) {
+                return function (response) {
+                    console.log({
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_order_id: response.razorpay_order_id,
+                        razorpay_signature: response.razorpay_signature
+                    });
+                    alert("Payment successful for " + plan + " plan!");
+                };
+            }
+
+            // Initialize Razorpay for rzp-button1
+            document.getElementById('rzp-button1').onclick = function (e) {
+                var options = {
+                    // Replace with your Razorpay API key
+                    "key": "rzp_test_kY71FTFw40NENF",
+                    "name": "Merchant Name",
+                    "description": "Standard Plan",
+                    "image": "https://i.imgur.com/NuTtj5I.png",
+                    "currency": "INR",
+                    "order_id": "order_NsVJufDlCLHhXa",
+                    "handler": razorpayHandler("Standard"),
+                    "prefill": {
+                        name: '{{ user_details.name }}',
+                        email: '{{ user_details.email }}',
+                        contact: "{{ user_details.phoneNumber }}"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#F3722D"
+                    }
+                };
+                var rzp = new Razorpay(options);
+                rzp.on('payment.failed', function (response){
+                    alert(response.error.code);
+                    alert(response.error.description);
+                    alert(response.error.source);
+                    alert(response.error.step);
+                    alert(response.error.reason);
+                    alert(response.error.metadata.order_id);
+                    alert(response.error.metadata.payment_id);
+                });
+                rzp.open();
+                e.preventDefault();
+            };
+
+            // Initialize Razorpay for rzp-button2
+            document.getElementById('rzp-button2').onclick = function (e) {
+                var options = {
+                    // Replace with your Razorpay API key
+                    "key": "rzp_test_kY71FTFw40NENF",
+                    "name": "Merchant Name",
+                    "description": "Business Plan",
+                    "image": "https://i.imgur.com/NuTtj5I.png",
+                    "currency": "INR",
+                    "order_id": "",
+                    "handler": razorpayHandler("Business"),
+                    "prefill": {
+                        "name": "Prasanth",
+                        "email": "prasanth@example.com",
+                        "contact": "9999999999"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#F3722D"
+                    }
+                };
+                var rzp = new Razorpay(options);
+                rzp.on('payment.failed', function (response){
+                    alert(response.error.code);
+                    alert(response.error.description);
+                    alert(response.error.source);
+                    alert(response.error.step);
+                    alert(response.error.reason);
+                    alert(response.error.metadata.order_id);
+                    alert(response.error.metadata.payment_id);
+                });
+                rzp.open();
+                e.preventDefault();
+            };
+
+            // Initialize Razorpay for rzp-button3
+            document.getElementById('rzp-button3').onclick = function (e) {
+                var options = {
+                    // Replace with your Razorpay API key
+                    "key": "rzp_test_kY71FTFw40NENF",
+                    "name": "Merchant Name",
+                    "description": "Premium Plan",
+                    "image": "https://i.imgur.com/NuTtj5I.png",
+                    "currency": "INR",
+                    "order_id": "",
+                    "handler": razorpayHandler("Premium"),
+                    "prefill": {
+                        "name": "Prasanth",
+                        "email": "prasanth@example.com",
+                        "contact": "9999999999"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#F3722D"
+                    }
+                };
+                var rzp = new Razorpay(options);
+                rzp.on('payment.failed', function (response){
+                    alert(response.error.code);
+                    alert(response.error.description);
+                    alert(response.error.source);
+                    alert(response.error.step);
+                    alert(response.error.reason);
+                    alert(response.error.metadata.order_id);
+                    alert(response.error.metadata.payment_id);
+                });
+                rzp.open();
+                e.preventDefault();
+            };
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

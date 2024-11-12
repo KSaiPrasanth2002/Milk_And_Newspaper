@@ -1,0 +1,507 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Milk and Newspaper</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            body {
+                /* font-family: monospace; */
+                margin: 0;
+                padding: 0;
+                background-color: #ADEFD1FF;
+            }
+
+            .container-fluid.one {
+                background-color: #343a40;
+                color: #ffffff;
+                padding: 10px 0;
+            }
+
+            .img1 {
+                max-height: 40px;
+                width: auto;
+            }
+
+            .vsh a {
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+
+            .vsh a:hover {
+                color: #d4d4d4;
+            }
+
+            .box-container {
+                border-radius: 10px;
+                
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 20px;
+                margin-top: 4%;
+            }
+
+            .box-image{
+                width: auto;
+                height: 450px;
+                
+            }
+            
+            .box-content {
+                background: url('your-background-image.jpg') center center/cover;
+                color: #fff;
+                padding: 20px;
+               
+            }
+            footer {
+                background-color: #343a40;
+                color: #fff;
+                padding: 50px 0;
+            }
+
+            .footer-content {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .footer-column {
+                flex: 1;
+                margin: 0 20px;
+            }
+
+            .footer-heading {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .footer-link {
+                display: block;
+                color: #bbb;
+                text-decoration: none;
+                margin-bottom: 10px;
+                transition: color 0.3s ease;
+            }
+
+            .footer-link:hover {
+                color: #fff;
+            }
+
+            .footer-form {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .footer-form input[type="email"] {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .footer-form button {
+                width: 100%;
+                padding: 10px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .footer-form button:hover {
+                background-color: #0056b3;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .social-icon {
+                font-size: 24px;
+                color: #fff;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+
+            .copyright {
+                text-align: center;
+                background-color: #120d0d;
+                color: white;
+                padding: 10px 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'website' %}">
+                    <img src="{% static 'images/download(2)123456.png' %}" alt="Logo" class="img1">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal text-light" href="{% url 'OurStory' %}">Our Story</a></li>
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal text-light" href="{% url 'Products' %}">Products</a></li>
+                        <li class="nav-item vsh"><a class="nav-link cursor-pointer hover:text-green text-14 font-normal text-light" href="{% url 'subscription' %}">Subscribe</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="{% url 'dashboard' %}" class="nav-link">My Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="nav-link"><i class="fas fa-lock"></i> Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'registration' %}" class="nav-link"><i class="fas fa-user"></i> Register</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-5">
+            <h3><b>Milk Products</b></h3>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="card relative" style="border-radius: 10px;">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="text-center me-3">
+                                    <img src="https://img.freepik.com/free-vector/dairy-cow-standing-two-legs-cartoon-character_1308-87845.jpg?w=360&t=st=1707560602~exp=1707561202~hmac=117eb32a35c98a014aa55c7678455be1a3577f531fc5ddccf8c3ded293f01e50" alt="Milk_New" class="card-img mx-auto d-block" style="height: 100px; width: 100px; padding-left: 20px;">
+                                </div>                                    
+                                <div class="flex-grow-1" style="padding-left: 80px;">
+                                    <h5 class="text-center fw-bold mt-3">Cow Milk</h5>
+                                    <p>₹45.5</p>
+                                    <p>450 ml</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <div style="padding-left: 30px; margin-right: 10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="https://www.shutterstock.com/image-vector/100-chemical-free-badge-logo-600nw-1824720437.jpg" alt="" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">Chemical Free</p>
+                                    </div>
+                                </div>                                
+                                
+                                <div style="padding-left: 20px; margin-right: 10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="https://cdproductimg.s3-us-west-2.amazonaws.com/cdproductimg/new-website/Group%2058825%403x%20%285%29.webp_1683883679524.webp" alt="" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">72 Tests Everyday</p>
+                                    </div>
+                                </div>
+                                
+                                <div style="padding-left: 20px; margin-right:10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="https://cdproductimg.s3-us-west-2.amazonaws.com/cdproductimg/new-website/Group%2058825%403x%20%283%29.webp_1683883718110.webp" alt="" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">Farm Fresh</p>
+                                    </div>
+                                </div>
+                            
+                                <div style="padding-left: 30px; padding-right: 50px; margin-right: 10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="https://cdproductimg.s3-us-west-2.amazonaws.com/cdproductimg/new-website/Group%2064744%403x.webp_1683883856220.webp" alt="100% Pure" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">100% Pure</p>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <ul>
+                                    <li>If you are a person who loves the purest and creamiest milk from the villageside, Milk and Newspaper Cow Milk is the right product for you!</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="card relative" style="border-radius: 10px;">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="text-center me-3">
+                                    <img src="https://media.istockphoto.com/id/1280156753/vector/illustration-of-a-village-woman-milking-a-cow-in-the-outdoor.jpg?s=612x612&w=0&k=20&c=TxLbs4sh9pscUP21Z6KZbVoA-CTZiJO9CE8Mwbmn1Lc=" alt="Milk_New" class="card-img mx-auto d-block" style="height: 100px; width: 150px;">
+                                </div>                                    
+                                <div class="flex-grow-1" style="padding-left: 40px;">
+                                    <h5 class="text-center fw-bold mt-3">Buffalo Milk</h5>
+                                    <p>₹53</p>
+                                    <p>450 ml</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <div style="padding-left: 30px; margin-right: 10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="https://www.shutterstock.com/image-vector/100-chemical-free-badge-logo-600nw-1824720437.jpg" alt="" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">Chemical Free</p>
+                                    </div>
+                                </div>                                
+                                
+                                <div style="padding-left: 20px; margin-right: 10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="https://cdproductimg.s3-us-west-2.amazonaws.com/cdproductimg/new-website/Group%2058825%403x%20%285%29.webp_1683883679524.webp" alt="" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">72 Tests Everyday</p>
+                                    </div>
+                                </div>
+                                
+                                <div style="padding-left: 20px; margin-right:10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="https://cdproductimg.s3-us-west-2.amazonaws.com/cdproductimg/new-website/Group%2058825%403x%20%283%29.webp_1683883718110.webp" alt="" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">Farm Fresh</p>
+                                    </div>
+                                </div>
+                            
+                                <div style="padding-left: 30px; padding-right: 50px; margin-right: 10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="https://cdproductimg.s3-us-west-2.amazonaws.com/cdproductimg/new-website/Group%2064744%403x.webp_1683883856220.webp" alt="100% Pure" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">100% Pure</p>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <ul>
+                                    <li>If you are a person who loves the purest and creamiest milk from the villageside, Milk and Newspaper Buffalo Milk is the right product for you!</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                
+        
+        <div class="container mt-5">
+            <h3><b>Newspapers</b></h3>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="card relative" style="border-radius: 10px;">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="text-center me-3">
+                                    <img src="https://www.andhrajyothy.com/assets/images/logo.png" alt="Newspaper" class="card-img mx-auto d-block" style="height: 120px; width: 150px; padding-left: 20px;">
+                                </div>
+                                <div class="flex-grow-1" style="padding-left: 50px;">
+                                    <h5 class="text-center fw-bold mt-3">Daily News</h5>
+                                    <p>Price: ₹10</p>
+                                    <p>Pages: 20</p>
+                                </div>
+                            </div>
+                            <!-- <hr>
+                            <div class="d-flex">
+                                <div style="padding-left: 30px; margin-right: 10px; display: flex; align-items: center;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <img src="icon_url_here" alt="Icon" style="height: 25px; width: 25px; margin-bottom: 5px;">
+                                        <p style="margin: 0; font-size: 14px;">Feature 1</p>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <hr>
+                            <div class="d-flex">
+                                <ul>
+                                    <li>Description of the newspaper and its key features.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="card relative" style="border-radius: 10px;">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="text-center me-3">
+                                    <img src="https://bcassetcdn.com/public/blog/wp-content/uploads/2021/10/18194442/The-Hindu.png" alt="Newspaper" class="card-img mx-auto d-block" style="height: 120px; width: 150px; padding-left: 20px;">
+                                </div>
+                                <div class="flex-grow-1" style="padding-left: 50px;">
+                                    <h5 class="text-center fw-bold mt-3">Daily News</h5>
+                                    <p>Price: ₹10</p>
+                                    <p>Pages: 20</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <ul>
+                                    <li>Description of the newspaper and its key features.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="card relative" style="border-radius: 10px;">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="text-center me-3">
+                                    <img src="https://logodix.com/logo/1195057.png" alt="Newspaper" class="card-img mx-auto d-block" style="height: 120px; width: 150px; padding-left: 20px;">
+                                </div>
+                                <div class="flex-grow-1" style="padding-left: 50px;">
+                                    <h5 class="text-center fw-bold mt-3">Daily News</h5>
+                                    <p>Price: ₹10</p>
+                                    <p>Pages: 20</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <ul>
+                                    <li>Description of the newspaper and its key features.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content mt-5 mb-5">
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="card relative" style="border-radius: 10px;">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="text-center">
+                                    <img src="https://logodix.com/logo/1195229.jpg" alt="Newspaper" class="card-img mx-auto d-block" style="height: 100px; width: 150px; padding-left: 10px;">
+                                </div>
+                                <div class="flex-grow-1" style="padding-left: 50px;">
+                                    <h5 class="text-center fw-bold mt-3">Daily News</h5>
+                                    <p>Price: ₹10</p>
+                                    <p>Pages: 20</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <ul>
+                                    <li>Description of the newspaper and its key features.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="card relative" style="border-radius: 10px;">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="text-center">
+                                    <img src="https://logodix.com/logo/1195010.png" alt="Newspaper" class="card-img mx-auto d-block" style="height: 100px; width: 150px; padding-left: 10px;">
+                                </div>
+                                <div class="flex-grow-1" style="padding-left: 50px;">
+                                    <h5 class="text-center fw-bold mt-3">Daily News</h5>
+                                    <p>Price: ₹10</p>
+                                    <p>Pages: 20</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <ul>
+                                    <li>Description of the newspaper and its key features.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="card relative" style="border-radius: 10px;">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="text-center">
+                                    <img src="https://logodix.com/logo/38252.png" alt="Newspaper" class="card-img mx-auto d-block" style="height: 100px; width: 150px; padding-left: 10px;">
+                                </div>
+                                <div class="flex-grow-1" style="padding-left: 50px;">
+                                    <h5 class="text-center fw-bold mt-3">Daily News</h5>
+                                    <p>Price: ₹10</p>
+                                    <p>Pages: 20</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex">
+                                <ul>
+                                    <li>Description of the newspaper and its key features.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid mt-5" style="background-color: white;">
+            <header style="text-align: center;">
+                <h2 style="font-weight: bold; padding-top: 10px; padding-right: 10px;">Explore Our Range</h2>
+                <p>Choose from our wide range of staples, dairy products, and fresh harvest. Get 100% natural essentials home delivered every day.</p>
+            </header>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                    <img src="https://i5.walmartimages.com/asr/cb1cd68e-8715-4d27-8cf3-d76d1fb3ecd7_1.be0f685e5aa0257357b63a83794fce59.jpeg" alt="flask" style="height: 300px; border-radius: 20px; width: 500px;">
+                </div>
+                <div class="col-md-12 text-center mt-4 mb-4 ">
+                    <a href="#" class="btn btn-success">View All Products</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h5 class="footer-heading">About Us</h5>
+                    <a href="{% url 'OurStory' %}" class="footer-link">Our Story</a>
+                    <a href="#" class="footer-link">Mission</a>
+                    <a href="#" class="footer-link">Vision</a>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <p class="footer-link">123 Street, City</p>
+                    <p class="footer-link">Email: info@example.com</p>
+                    <p class="footer-link">Phone: +91 9000163173</p>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Phone Number</h5>
+                    <p class="footer-link">+91 9000163173</p>
+                </div>
+                <div class="footer-column">
+                    <h5 class="footer-heading">Subscribe to Newsletter</h5>
+                    <form id="subscribeForm" class="footer-form">
+                        <input type="email" class="form-control mb-2" placeholder="Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-instagram social-icon" onclick="window.open('https://www.instagram.com/', '_blank')"></i>
+                <i class="fab fa-twitter social-icon" onclick="window.open('https://twitter.com/', '_blank')"></i>
+                <i class="fab fa-google social-icon" onclick="window.open('https://www.google.com/', '_blank')"></i>
+                <i class="fab fa-facebook social-icon" onclick="window.open('https://www.facebook.com/', '_blank')"></i>
+            </div>
+        </footer>
+    
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
+        <div class="copyright">
+            <p>&copy; 2024 Milk and Newspaper Delivery Subscription Application. All rights reserved.</p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
