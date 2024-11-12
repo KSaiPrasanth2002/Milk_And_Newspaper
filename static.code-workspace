@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "static",
+			"path": "static"
+		},
+		{
+			"name": "app",
+			"path": "app"
+		},
+		{
+			"name": "project",
+			"path": "project"
+		}
+	]
+}
